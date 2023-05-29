@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            margin: auto;
+            padding: auto;
+        }
+        .header
+        {
+            background-image: linear-gradient(to right,blue,black);
+            height: 50px;
+            padding: 4px;
+            width: 100%;
+            text-align: center;
+            color: aliceblue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 400;
+            
+        }
+        .marksheet
+        {
+            text-align: center;
+            background-color: aqua;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .marksheet input
+        {
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgb(234, 233, 240);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <p>CALCULATE YOUR SCORE</p>
+    </div>
+    <div class="marksheet">
+       
+
+      <label for="hi">HINDI</label><br>
+      <input type="text" id="hi" placeholder="Enter marks of hindi"><br>
+
+      <label for="en">ENGLISH</label><br>
+      <input type="text" id="en" placeholder="Enter marks of english"><br>
+
+      <label for="ma">MATH</label><br>
+      <input type="text" id="ma" placeholder="Enter marks of math"><br>
+
+      <label for="ph">PHYSICS</label><br>
+      <input type="text" id="ph" placeholder="Enter marks of physics"><br>
+
+      <label for="ch">CHEMISTRY</label><br>
+      <input type="text" id="ch" placeholder="Enter marks of chemistry"><br><br>
+   
+    <div class="operation">
+        <label for="tot">TOTAL<input type="text" id="tot"></label><br><br>
+        <label for="per">PERCENTAGE <input type="text" id="per"></label><br><br>
+        <label for="gr">GRADE <input type="text" id="gr"></label><br><br>
+        <label for="res"><input type="button" value="SUBMIT" onclick="result_calculation()"></label>
+    </div>
+       
+    </div>
+    <script>
+        function result_calculation()
+        {
+            let h=document.getElementById("hi").value;
+            let e=document.getElementById("en").value;
+            let m=document.getElementById("ma").value;
+            let p=document.getElementById("ph").value;
+            let c=document.getElementById("ch").value;
+            let t=Number(h)+Number(e)+Number(m)+Number(p)+Number(c);
+            let per=Number(t)/5;
+
+            document.getElementById("tot").value=t;
+            document.getElementById("per").value=per;
+
+            if (p>=85)
+            {
+                let g="S";
+                document.getElementById("gr").value=g;
+            }
+            else if(p>=60)
+            {
+                let g="A";
+                document.getElementById("gr").value=g;
+            }
+            else if(p>=45)
+            {
+                let g="B";
+                document.getElementById("gr").value=g;
+            }
+            else if(p>=33)
+            {
+                let g="C";
+                document.getElementById("gr").value=g;
+            }
+            else
+            {
+                let g="F";
+                document.getElementById("gr").value=g;
+            }
+        }
+    </script>
+</body>
+</html>
