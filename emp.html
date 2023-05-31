@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Salary Calculation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            height: auto; /* Adjusted height */
+            overflow: hidden; /* Hide any overflowing content */
+        }
+
+
+        .header h1 {
+            text-align: center;
+            color: rgb(243, 249, 252);
+            text-transform: uppercase;
+            background-image: linear-gradient(to right,blue,rgb(19, 185, 226),rgb(31, 23, 68));
+        }
+
+        p {
+            text-align: center;
+            color: rgb(193, 209, 231);
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #f2f2f2;
+        }
+
+        input[type="text"], select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #17171c;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: black;
+        color: snow;
+        border-top-left-radius: 20px;
+        }
+        
+
+        .sub {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #5452ec;
+            color: rgb(245, 232, 232);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 400;
+            font-size: 25px;
+            border-radius: 50px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Animated background */
+        body {
+            animation: changeBackground 10s infinite alternate;
+            background: linear-gradient(to right, #222edb, rgb(10, 12, 78), #7173d3);
+        }
+
+        @keyframes changeBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> <h1>Employee Salary Calculation</h1></div>
+    <div class="container">
+        <p>PLEASE ENTER EMPLOYEE NAME AND BASIC SALARY</p>
+        <label for="emp">EMP_NAME  <input type="text" id="emp"></label>
+        <label for="bs">BASIC SALARY  <input type="text" id="bs"></label>
+        
+        <label for="d">DESIGNATION : 
+            <select id="d">
+                <option value="">Select designation</option>
+                <option value="p">PROFESSOR</option>
+                <option value="ap">ASSISTANT PROFESSOR</option>
+                <option value="it">IT DEPARTMENT</option>
+                <option value="c">CLERK</option>
+                <option value="l">LIBRARIAN</option>
+                <option value="pe">PEON</option>
+            </select>
+        </label>
+        
+        <label for="cl">CLASS <input type="text" id="cl"></label>
+        
+        <label for="hra">HRA  <input type="text" id="hra"></label>
+        <label for="da">DA  <input type="text" id="da"></label>
+        <label for="pf">PF  <input type="text" id="pf"></label>
+        <label for="gs">GS  <input type="text" id="gs"></label>
+        <label for="ns">NET SALARY  <input type="text" id="ns"></label>
+        <input type="submit" class="sub" value="PAY" onclick="pay()">
+    </div>
+
+    <footer class="footer">
+        &copy; 2023 Avinash. All rights reserved.
+    </footer>
+
+    <script>
+        function pay() {
+            let emp = document.getElementById("emp").value;
+            let bs = document.getElementById("bs").value;
+            let d = document.getElementById("d").value;
+            let c;
+            let hra = 0;
+            let gs = 0;
+
+            
+            if (d === "p" || d === "ap") {
+                c = "A";
+            } else if (d === "it") {
+                c = "B";
+            } else if (d === "c" || d === "l") {
+                c = "C";
+            } else if (d === "pe") {
+                c = "D";
+            } 
+            document.getElementById("cl").value=c;
+              
+
+            if (d === "p" || d === "ap") {
+                c = "A";
+            } else if (d === "it") {
+                c = "B";
+            } else if (d === "c" || d === "l") {
+                c = "C";
+            } else if (d === "pe") {
+                c = "D";
+            }
+            document.getElementById("cl").value = c;
+
+            if (c === "A" || bs >= 20000) {
+                hra = bs * 30 / 100;
+                document.getElementById("hra").value = hra;
+            }
+
+            let da = bs * 20 / 100;
+            document.getElementById("da").value = da;
+
+            let pf = bs * 12 / 100;
+            document.getElementById("pf").value = pf;
+
+            gs = Number(bs) + Number(hra) + Number(da) - Number(pf);
+            document.getElementById("gs").value = gs;
+
+            let ns = gs * 0.9;
+            document.getElementById("ns").value = ns;
+        }
+    </script>
+</body>
+</html>
